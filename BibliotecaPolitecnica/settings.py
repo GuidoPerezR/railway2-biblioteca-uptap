@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'Aplicaciones.Modulo.apps.ModuloConfig'
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://railway2-biblioteca-uptap-production-9ee4.up.railway.app/']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

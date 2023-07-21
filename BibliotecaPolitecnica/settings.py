@@ -17,7 +17,6 @@ from django.urls import reverse_lazy
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -82,14 +81,15 @@ WSGI_APPLICATION = 'BibliotecaPolitecnica.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'Nj7aFlXwTn9hCNcB4b19',
-        'HOST': 'containers-us-west-107.railway.app',
-        'PORT': '7379',
+        'USER': 'postgres',
+        'PASSWORD': 'KNA4tdWUTv1wlfE82HP0',
+        'HOST': 'containers-us-west-206.railway.app',
+        'PORT': '5850',
     }
 }
 

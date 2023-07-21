@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'Aplicaciones.Modulo.apps.ModuloConfig'
 ]
 
@@ -48,6 +49,7 @@ CSRF_TRUSTED_ORIGINS = ['https://railway2-biblioteca-uptap-production-9ee4.up.ra
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,6 +133,8 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'BibliotecaPolitecnica/static'),)
 

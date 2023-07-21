@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="navbar-left">
+
+            <div class="navbar-logo">
+                <a href="{% url 'modulo:BooksPage' %}">
+                    <img src="{%static 'images/LogoUPTap.png'%}" alt="Logo">
+                </a>
+            </div>
+
+            <div class="navbar-titulo">
+                <p>Biblioteca Politécnica</p>
+            </div>
+
+        </div>
+
+        <div class="navbar-search">
+
+            <div class="navbar-search-content">
+
+                <div class="search-input">
+                    <form class="d-flex" method="get" action="{% url 'modulo:BooksPage' %}">
+                        <button type="submit">
+                            <img src="{%static 'icons/search.svg'%}">
+                        </button>
+                        <input type="search" placeholder="Buscar Libro" aria-label="Search" name="buscar"
+                            value="{{ request.GET.buscar }}">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="navbar-icons">
+            <div class="book-cart-icon">
+                <img src="{%static 'icons/library.svg'%}">
+            </div>
+            <div class="user-icon">
+                <img src="{%static 'icons/user1.svg'%}">
+            </div>
+        </div>
+
+    </nav>
+</body>
+
+</html>

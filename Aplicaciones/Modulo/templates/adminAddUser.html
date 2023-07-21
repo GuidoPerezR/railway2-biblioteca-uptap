@@ -1,0 +1,46 @@
+{% load static %}
+
+{% block content %}
+
+<div class=adminAddUser">
+    <div class="add-user-content">
+        <div class="add-user-form">
+            <div class="add-user-title">
+                <p>Añadir Usuario</p>
+            </div>
+            <form method="POST" class="user-form">
+                {% csrf_token %}
+                <div class="form-field">
+                    <p>Nombre Completo</p>
+                    {{ user_form.nombre_completo }}
+                </div>
+                <div class="form-field">
+                    <p>Email</p>
+                    {{ user_form.email }}
+                </div>
+                <div class="form-field">
+                    <p>Contraseña</p>
+                    {{ user_form.contraseña }}
+                </div>
+                <div class="form-field">
+                    <p>Cargo</p>
+                    <div class="choice-field">
+                        {{ user_form.id_cargo }}
+                    </div>
+                </div>
+                <div class="form-field">
+                    <p>Turno</p>
+                    <div class="choice-field">
+                        {{ user_form.id_turno }}
+                    </div>
+                </div>
+                <div class="buttons-user-form">
+                    <div class="add-button">
+                        <button type="submit" class="primary-button button-agregar">Agregar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

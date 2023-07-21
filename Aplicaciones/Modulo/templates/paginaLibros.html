@@ -1,0 +1,157 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Libros {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacionPrincipal.html" %}
+{% if request.user.is_authenticated %}
+<div class="Biblioteca">
+
+    <div class="aside-book-cart inactive">
+        {% include "bookCart.html" %}
+    </div>
+
+    <div class="aside-user-menu inactive">
+        {% include "userMenu.html" %}
+    </div>
+
+    <nav class="secondary-navbar">
+
+        <div class="secondary-navbar-content">
+
+            <div class="secondary-navbar-sections">
+                <a href="#Ingeniería Agroindustrial">
+                    <p>Agroindustrial</p>
+                </a>
+                <a href="#Ingeniería en Tecnología Ambiental">
+                    <p>Ambiental</p>
+                </a>
+                <a href="#Ingeniería en Animación y Efectos Visuales">
+                    <p>Animación</p>
+                </a>
+                <a href="#Ingeniería en Sistemas Automotrices">
+                    <p>Automotrices</p>
+                </a>
+                <a href="#Ingeniería en Energía">
+                    <p>Energía</p>
+                </a>
+                <a href="#Ingeniería Financiera">
+                    <p>Financiera</p>
+                </a>
+                <a href="#Ingeniería en Logística y Transporte">
+                    <p>Logística</p>
+                </a>
+                <a href="#Ingeniería Mecatrónica">
+                    <p>Mecatrónica</p>
+                </a>
+                <a href="#Ingeniería en Nanotecnología">
+                    <p>Nanotecnología</p>
+                </a>
+                <a href="#Ingeniería en Software">
+                    <p>Software</p>
+                </a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="books-page">
+
+        {% for carrera in carreras %}
+        <div class="list-books" id="{{ carrera.nom_carrera }}">
+
+            <div class="section-name">
+                <h1>{{ carrera.nom_carrera }}</h1>
+            </div>
+
+            <div class="list-books-section">
+                <div class="list-books-container">
+                    <img class="control prev" src="{%static 'images/left.png'%}">
+                    <div class="slider">
+                        {% for libro in libros %}
+                        {% if libro.carrera == carrera %}
+                        <a href="{% url 'modulo:BookDetail' libro.codigo_interno %}">
+                            <div class="book">
+                                <div class="book-content">
+                                    <div class="book-image">
+                                        <div class="image-content">
+                                            <img src="{{libro.imagen.url}}">
+                                        </div>
+                                    </div>
+                                    <div class="book-description">
+                                        <div class="book-info">
+                                            <div class="book-title">
+                                                <p>{{ libro.titulo }}</p>
+                                            </div>
+                                            <div class="book-author">
+                                                <p>{{ libro.autor }}</p>
+                                            </div>
+                                            <div class="book-available">
+                                                <p>Disponibles: {{ libro.disponibles }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <img class="control next" src="{%static 'images/right.png'%}">
+                </div>
+            </div>
+
+        </div>
+        {% endfor%}
+
+    </div>
+</div>
+{% endif %}
+<script>
+    /*Programacion Slider*/ 
+    const slider = document.getElementsByClassName('slider')
+    const prev = document.getElementsByClassName('prev')
+    const next = document.getElementsByClassName('next')
+
+    for (let index = 0; index < slider.length; index++) {
+        prev[index].addEventListener('click', () => (
+            slider[index].scrollLeft -= 600))
+        next[index].addEventListener('click', () => (
+            slider[index].scrollLeft += 600))
+        console.log(prev)
+        console.log(next)
+    }
+
+    /*Programacion menu de vistas de la pagina de libros*/
+    const buttonBookCart = document.querySelector('.book-cart-icon')
+    const buttonUserMenu = document.querySelector('.user-icon')
+    const bookCart = document.querySelector('.aside-book-cart')
+    const userMenu = document.querySelector('.aside-user-menu')
+
+    buttonUserMenu.addEventListener('click', toggleUserMenu)
+    buttonBookCart.addEventListener('click', toggleBookCart)
+
+    function toggleUserMenu() {
+        const isBookCartClosed = bookCart.classList.contains('inactive')
+
+        if (!isBookCartClosed) {
+            bookCart.classList.add('inactive')
+        }
+
+        userMenu.classList.toggle('inactive')
+    }
+
+    function toggleBookCart() {
+        const isUserMenuClosed = userMenu.classList.contains('inactive')
+
+        if (!isUserMenuClosed) {
+            userMenu.classList.add('inactive')
+        }
+
+        bookCart.classList.toggle('inactive')
+    }
+</script>
+{% include "footer.html" %}
+{% endblock %}

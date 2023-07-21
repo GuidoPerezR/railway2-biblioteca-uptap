@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Libros {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacion.html" %}
+
+<div class=bookDetail">
+    <div class="book-detail-content">
+
+        <div class="book-detail-card">
+            <div class="book-detail-image">
+                <div class="book-detail-image-content">
+                    <img src="{{book.imagen.url}}">
+                </div>
+            </div>
+            <div class="book-detail-description">
+                <div class="book-detail-info">
+                    <div class="book-detail-title">
+                        <p>{{ book.titulo }}</p>
+                    </div>
+                    <div class="book-detail-available">
+                        <p>Disponibles: {{ book.disponibles }}</p>
+                    </div>
+                    <p class="text-informacion-del-libro">Información del libro</p>
+                    <div class="book-detail-author">
+                        <p>Autor: {{ book.autor }}</p>
+                    </div>
+                    <div class="book-detail-editorial">
+                        <p>Editorial: {{ book.editorial }}</p>
+                    </div>
+                    <div class="book-detail-languague">
+                        <p>Idioma: {{ book.idioma }}</p>
+                    </div>
+                    <div class="book-detail-pages">
+                        <p>Paginas: {{ book.paginas }}</p>
+                    </div>
+                </div>
+                <div class="book-detail-buttons">
+                    <div class="button-content boton-solicitar">
+                        <a href="{% url 'modulo:BookRequest' book.codigo_interno %}">
+                            <button class="primary-button button-solicitar">Solicitar</button>
+                        </a>
+                    </div>
+                    <div class="button-content boton-Añadir">
+                        <a href="#">
+                            <button type="submit" class="primary-button button-Añadir">Añadir al librero</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

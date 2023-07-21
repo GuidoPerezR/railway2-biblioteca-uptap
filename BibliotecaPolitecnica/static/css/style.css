@@ -1,0 +1,991 @@
+:root {
+	--purple: #674EA7;
+	--green: #93CD99;
+	--hover: #09804a;
+	--bgBook: #d7d7d7;
+	--white: #FFFFFF;
+	--size-text: 20px;
+	--subtitle: 30px;
+	--title: 38px;
+	--sizeBookTitle: 20px;
+	--sizeInfoBook: 15px;
+}
+
+@font-face {
+	font-family: 'pageFont';
+	src: url(fonts/MADEOkineSansPERSONALUSE-Medium.otf) format('truetype');
+}
+
+* {
+	font-family: 'pageFont';
+	margin: 0;
+	box-sizing: border-box;
+}
+
+p {
+	margin-bottom: 0;
+}
+
+*,
+*:after,
+*:before {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.inactive {
+	display: none;
+}
+
+#contenedor_carga {
+	background-color: var(--white);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	-webkit-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+	z-index: 10000;
+}
+
+.spinner-border {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	height: 15vh;
+	background-color: var(--purple);
+	z-index: 1;
+}
+
+.navbar-login {
+	justify-content: start;
+	padding-left: 100px;
+}
+
+.navbar-left {
+	display: flex;
+	align-items: center;
+}
+
+.navbar-titulo {
+	margin: 0 0 0 24px;
+	color: var(--white);
+	font-size: var(--title);
+}
+
+.navbar-logo img {
+	width: 80px;
+	height: auto;
+}
+
+.navbar-search {
+	background-color: var(--white);
+	border-radius: 3rem;
+	width: 25%;
+	padding: 6px 0;
+}
+
+.navbar-search input {
+	width: 320px;
+	margin-right: 0 !important;
+	border-color: transparent;
+	outline: none;
+	font-size: 18px;
+	border-radius: 1rem;
+	padding-left: 6px;
+}
+
+.navbar-search-content {
+	display: flex;
+	align-items: center;
+	padding-left: 12px;
+	gap: 12px;
+}
+
+.navbar-search img {
+	width: 30px;
+	height: auto;
+}
+
+.search-input  button{
+	background: transparent;
+	border-color: transparent;
+}
+
+.navbar-icons {
+	display: flex;
+	gap: 24px;
+}
+
+.navbar-icons img {
+	width: 55px;
+	height: auto;
+	cursor: pointer;
+}
+
+.primary-button {
+	background-color: var(--green);
+	border-radius: 10px;
+	color: var(--white);
+	font-size: var(--size-text);
+	padding: 12px 50px;
+	text-decoration: none;
+	border-color: transparent;
+	cursor: pointer;
+}
+
+.primary-button:hover {
+	background-color: var(--hover);
+	color: var(--white);
+	transform: translateY(-3%);
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 1);
+	border-color: transparent;
+}
+
+.footer {
+	background-color: rgb(46, 45, 45);
+	color: var(--white);
+	padding: 4% 0;
+}
+
+.content-footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-info {
+	padding: 0 5%;
+	margin-left: 10%;
+	width: 50%;
+}
+
+.footer-info ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-info img {
+	height: 30px;
+	width: auto;
+}
+
+.footer-info-details {
+	margin-top: 24px;
+}
+
+.contact {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 12px;
+	align-items: center;
+}
+
+.contact-info {
+	justify-self: center;
+	margin-bottom: 0;
+}
+
+.footer-info-icons {
+	display: flex;
+	gap: 16px;
+}
+
+/*Contenido Iniciar Sesion*/
+.logIn {
+	height: 90vh;
+}
+
+.content-alert {
+	position: absolute;
+	top: 22%;
+	width: 20%;
+	z-index: 1;
+}
+
+.content-alert ul {
+	list-style: none;
+	padding: 0 12px;
+	font-size: 14px;
+}
+
+.logInFormContent {
+	background-color: rgba(255, 255, 255, 0.737);
+	backdrop-filter: blur(3px);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	align-items: center;
+}
+
+.logInUp {
+	margin-top: 12px;
+}
+
+.lince-image img {
+	width: 220px;
+	height: auto;
+}
+
+.logInDown {
+	background-color: var(--white);
+	border: 3px solid black;
+	border-radius: 2rem;
+	width: 55%;
+	margin-top: -67px;
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.225);
+}
+
+.title {
+	font-size: var(--subtitle);
+	text-align: center;
+	margin-top: 24px;
+}
+
+.input-form {
+	margin-top: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.input-form input {
+	width: 300px;
+	background-color: rgb(236, 234, 234);
+	border: 3px solid rgb(136, 134, 134);
+	font-size: 17px;
+	border-radius: 10px;
+	padding: 10px 20px;
+	margin-bottom: 24px;
+
+}
+
+.input-form input::placeholder {
+	color: rgb(155, 155, 155);
+}
+
+.boton-ingresar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 24px 0;
+}
+
+/*Contenido Pagina Libros*/
+.secondary-navbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--green);
+	padding: 10px 0;
+}
+
+.secondary-navbar-content {
+	display: flex;
+	gap: 24px;
+}
+
+.menu-icon {
+	margin-left: 24px;
+}
+
+.menu-icon-content img {
+	width: 34px;
+	height: auto;
+}
+
+.secondary-navbar-sections {
+	display: flex;
+	gap: 30px;
+	align-items: center;
+	justify-content: center;
+}
+
+.secondary-navbar-sections a {
+	text-decoration: none;
+	position: relative;
+}
+
+.secondary-navbar-sections a:focus,
+.secondary-navbar-sections a:hover {
+	color: var(--hover);
+}
+
+.secondary-navbar-sections a:focus::after,
+.secondary-navbar-sections a:hover:after {
+	width: 100%;
+	left: 0%;
+}
+
+.secondary-navbar-sections a:after {
+	content: "";
+	bottom: -2px;
+	left: 50%;
+	position: absolute;
+	width: 0%;
+	height: 2px;
+	background-color: #fff;
+	transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition-duration: 400ms;
+	transition-property: width, left;
+
+}
+
+.secondary-navbar-sections p {
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	color: black;
+	padding: 8px;
+}
+
+.secondary-navbar-sections p:hover {
+	color: var(--white);
+	cursor: pointer;
+}
+
+.section-name {
+	margin: 3rem 12rem;
+}
+
+.list-books-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.list-books-container {
+	position: relative;
+}
+
+.slider {
+	display: flex;
+	width: 1200px;
+	padding: 24px;
+	overflow: hidden;
+	scroll-behavior: smooth;
+	gap: 50px;
+}
+
+.slider a {
+	text-decoration: none;
+}
+
+.control{
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: rgb(149, 149, 149);
+	cursor: pointer;
+	object-fit: contain;
+	padding: 10px;
+}
+
+.control:hover {
+	background: black;
+}
+
+.prev {
+	padding: 12px;
+	left: 0;
+	top: 50%;
+	transform: translate(-125%, -50%);
+}
+
+.next{
+	padding: 12px;
+	right: 0;
+	top: 50%;
+	transform: translate(125%, -50%);
+}
+
+.book {
+	box-shadow: 2px 4px 10px rgb(147, 147, 147);
+	transition: all 400ms ease;
+}
+
+.book:hover {
+	cursor: pointer;
+	transform: translateY(-3%);
+}
+
+.book-content {
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	height: 400px;
+	overflow: hidden;
+}
+
+.book-image {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.image-content {
+	width: 200px;
+	height: 250px;
+}
+
+.image-content img {
+	padding: 24px;
+	width: 100%;
+	height: 100%;
+}
+
+.book-description {
+	height: 40%;
+}
+
+.book-info {
+	height: 100%;
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	background-color: var(--bgBook);
+}
+
+.book-title {
+	text-align: center;
+}
+
+.book-title p {
+	font-size: 16px;
+	align-items: right;
+	color: black;
+}
+
+.book-author,
+.book-available {
+	margin-left: 24px;
+}
+
+.book-author p,
+.book-available p {
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 14px;
+	color: black;
+}
+
+/*Contenido de detalle de libro*/
+.book-detail-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 100px 0px;
+}
+
+.book-detail-card {
+	display: flex;
+	width: 1100px;
+	background: var(--bgBook);
+}
+
+.book-detail-image {
+	padding: 6px;
+}
+
+.book-detail-image-content {
+	width: 300px;
+	height: 400px;
+	background: var(--white);
+}
+
+.book-detail-image-content img {
+	padding: 24px;
+	width: 100%;
+	height: 100%;
+}
+
+.book-detail-description {
+	padding: 24px;
+}
+
+.book-detail-title {
+	font-size: var(--title);
+	text-align: center;
+}
+
+.book-detail-info {
+	width: 800px;
+}
+
+.book-detail-info p {
+	margin-bottom: 12px;
+}
+
+.text-informacion-del-libro {
+	font-size: var(--size-text);
+}
+
+.book-detail-available p,
+.book-detail-author p,
+.book-detail-editorial p,
+.book-detail-languague p,
+.book-detail-pages p {
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 14px;
+}
+
+.book-detail-buttons {
+	margin-top: 24px;
+	display: flex;
+	gap: 42px;
+	justify-content: center;
+}
+
+/*Contenido de Solicitud de Libro*/
+.book-request-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 100px 0px;
+}
+
+.book-request-card {
+	width: 700px;
+	background: var(--bgBook);
+}
+
+.book-request-info {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 42px 120px;
+}
+
+.text-thanks-request {
+	font-size: var(--title);
+}
+
+.book-request-return-date p {
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 14px;
+}
+
+.book-request-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 24px;
+}
+
+/*Contenido Carrito de Libros*/
+.book-cart-content {
+	width: 400px;
+	padding: 24px;
+	box-sizing: border-box;
+	position: absolute;
+	right: 0;
+	background: rgb(227, 227, 227);
+	border-radius: 20px;
+	z-index: 1;
+}
+
+.book-cart-head{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.book-cart-head-title{
+	width: 100%;
+}
+
+.book-cart-head-title p {
+	font-size: 24px;
+	text-align: center;
+}
+
+.book-cart-product {
+	display: grid;
+	grid-template-columns: auto 1fr auto auto;
+	gap: 16px;
+	margin-bottom: 24px;
+	align-items: center;
+	background: var(--white);
+	border-radius: 20px;
+}
+
+.book-cart-image-content {
+	margin: 0;
+}
+
+.book-cart-image-content img {
+	width: 80px;
+	height: 100px;
+	border-radius: 20px;
+	object-fit: cover;
+	padding: 12px;
+}
+
+.book-cart-book-title {
+	font-size: 14px;
+}
+
+.book-cart-delete-content img{
+	width: 40px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.book-cart-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Contenido Menu de Usuario*/
+.user-menu-content{
+	width: 450px;
+	box-sizing: border-box;
+	position: absolute;
+	right: 0;
+	background: var(--white);
+	border-radius: 20px;
+	border: 3px solid rgb(165, 165, 165);
+	z-index: 1;
+}
+
+.user-menu-content hr{
+	margin: 0;
+}
+
+.user-menu-data{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	padding: 24px 42px;
+}
+
+.user-menu-data-info{
+	display: flex;
+	flex-direction: column;
+}
+
+.user-menu-data-image img{
+	width: 70px;
+	height: 70px;
+}
+
+.user-menu-data-name p{
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.user-menu-data-email p{
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 600;
+}
+
+.user-menu-log-out{
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	padding: 24px 42px;
+}
+
+.user-menu-log-out-image img{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.user-menu-log-out-text p{
+	font-size: 18px;
+}
+
+/*Contenido Pagina de libros del Administrador*/
+
+.admin-book:hover{
+	cursor: default;
+}
+
+.edit-icon{
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 12px;
+	cursor: pointer;
+}
+
+.edit-icon img{
+	width: 20px;
+	height: 20px;
+	z-index: 1;
+}
+
+.add-book-icon img{
+	padding: 6px;
+}
+
+/*Contenido del detalle del libro del Administrador*/
+.book-detail-form{
+	display: flex;
+	width: 1100px;
+	background: var(--bgBook);
+}
+
+.book-detail-image-content-admin{
+	width: 400px;
+	height: 550px;
+	background: var(--white);
+}
+
+.book-detail-image-content-admin img {
+	padding: 24px;
+	width: 100%;
+	height: 100%;
+}
+
+.book-detail-image-admin{
+	position: relative;
+	padding: 0;
+}
+
+.book-detail-image-cover{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.book-detail-image-cover-content{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: rgba(112, 112, 112, 0.664);
+}
+
+.book-detail-image-cover-content button{
+	background: rgb(54, 52, 52);
+	border-radius: 10px;
+	color: var(--white);
+	padding: 6px 18px;
+	border: transparent;
+}
+
+.book-detail-image-cover-content button:hover{
+	background: var(--white);
+	color: rgb(54, 52, 52);;
+}
+
+.book-detail-button-edit-image{
+	display: none;
+}
+
+.book-detail-description-admin{
+	width: 100%;
+}
+
+.book-detail-info-admin{
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: 500px;
+}
+
+.book-detail-info-admin p{
+	margin-bottom: 0;
+}
+
+.book-detail-admin{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.book-detail-admin p{
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 14px;
+}
+
+.book-detail-admin input{
+	width: 350px;
+	height: 30px;
+	font-size: 14px;
+	padding: 6px;
+	font-family: 'Titillium Web', sans-serif;
+	border-radius: 10px;
+	border: transparent;
+}
+
+.button-Eliminar{
+	background-color: rgba(255, 0, 0, 0.555);
+}
+
+.button-Eliminar:hover{
+	background-color: rgb(201, 0, 0);
+}
+
+/*Contenido pagina de prestamos del administrador*/
+.admin-request-list-content{
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 100px 50px;
+}
+
+.admin-request-list-up{
+	display: flex;
+	justify-content: space-between;
+}
+
+.admin-request-list-title-content p{
+	font-size: 30px;
+}
+
+.admin-request-list-search{
+	background-color: var(--white);
+	border-radius: 3rem;
+	width: 25%;
+	padding: 6px 0;
+}
+
+.admin-request-list-search input{
+	width: 320px;
+	margin-right: 0 !important;
+	outline: none;
+	font-size: 18px;
+	border-radius: 1rem;
+	padding: 3px 12px;
+	font-size: 18px;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.admin-request-list-search img{
+	width: 30px;
+	height: auto;
+}
+
+.admin-request-list-search-content{
+	display: flex;
+	align-items: center;
+	padding-left: 12px;
+	gap: 12px;
+}
+
+.admin-request-list-table table{
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.admin-request-list-table-titles{
+	background: rgb(238, 238, 238);
+	text-align: center;
+}
+
+.admin-request-list-table-titles p{
+	font-size: 20px;
+}
+
+.table-title{
+	padding: 20px 80px;
+}
+
+.request{
+	background: rgb(248, 248, 248);
+}
+
+.request-data{
+	text-align: center;
+	border-bottom: solid 1px var(--bgBook);
+	padding: 24px 0;
+}
+
+.request-data p{
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 500;
+}
+
+/*Contenido Administrador funciones Añadir*/
+.add-career-content{
+	position: absolute;
+	background: var(--white);
+	box-shadow: 2px 4px 10px rgb(147, 147, 147);
+	width: 400px;
+	height: 350px;
+	z-index: 1;
+	right: 0;
+	margin: 0 24px;
+}
+.add-user-content{
+	position: absolute;
+	background: var(--white);
+	box-shadow: 2px 4px 10px rgb(147, 147, 147);
+	width: 400px;
+	height: 650px;
+	z-index: 1;
+	right: 0;
+	margin: 0 24px;
+}
+
+.add-user-form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 12px;
+	width: 100%;
+	height: 100%;
+}
+
+.form-field input{
+	width: 250px;
+	height: 40px;
+	border-radius: 10px;
+	border-color: var(--bgBook);
+	font-size: 16px;
+	padding: 0 6px;
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 500;
+}
+
+.add-user-title p{
+	font-size: 28px;
+}
+
+.user-form{
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.choice-field select{
+	width: 100%;
+	padding: 6px;
+	font-size: 18px;
+}
+
+.add-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-agregar{
+	margin-top: 24px;
+}

@@ -1,0 +1,85 @@
+{% load static %}
+
+
+{% block content %}
+<aside class="bookCart">
+    <div class="book-cart-content">
+        <div class="book-cart-head">
+            <div class="book-cart-head-title">
+                <div class="book-cart-head-title-content">
+                    <p>Librero</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-cart-order">
+            <div class="book-cart-product">
+                <div class="book-cart-image">
+                    <div class="book-cart-image-content">
+                        <img src="{%static 'images/libro1.jpg'%}">
+                    </div>
+                </div>
+                <div class="book-cart-description">
+                    <div class="book-cart-info">
+                        <div class="book-cart-book-title">
+                            <p>Algebra Lineal</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-delete">
+                    <div class="book-cart-delete-content">
+                        <img src="{%static 'icons/delete.svg'%}">
+                    </div>
+                </div>
+            </div>
+            <div class="book-cart-product">
+                <div class="book-cart-image">
+                    <div class="book-cart-image-content">
+                        <img src="{%static 'images/libro2.jpg'%}">
+                    </div>
+                </div>
+                <div class="book-cart-description">
+                    <div class="book-cart-info">
+                        <div class="book-cart-book-title">
+                            <p>Inteligencia Artificial</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-delete">
+                    <div class="book-cart-delete-content">
+                        <img src="{%static 'icons/delete.svg'%}">
+                    </div>
+                </div>
+            </div>
+            <div class="book-cart-product">
+                <div class="book-cart-image">
+                    <div class="book-cart-image-content">
+                        <img src="{%static 'images/libro3.jpg'%}">
+                    </div>
+                </div>
+                <div class="book-cart-description">
+                    <div class="book-cart-info">
+                        <div class="book-cart-book-title">
+                            <p>Ingeniera de Software</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-delete">
+                    <div class="book-cart-delete-content">
+                        <img src="{%static 'icons/delete.svg'%}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="book-cart-button">
+            <div class="button-content boton-solicitar">
+                <a href="#">
+                    <button class="primary-button button-solicitar">Solicitar</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</aside>
+
+{% endblock %}

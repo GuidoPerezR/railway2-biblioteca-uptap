@@ -1,0 +1,85 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Libros {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacionAdmin.html" %}
+<div class="adminRequestList">
+    <div class="admin-request-list-content">
+
+        <div class="admin-request-list-up">
+            <div class="admin-request-list-title">
+                <div class="admin-request-list-title-content">
+                    <p>Prestamos</p>
+                </div>
+            </div>
+            <div class="admin-request-list-search">
+                <div class="admin-request-list-search-content">
+
+                    <div class="search-input">
+                        <form class="d-flex" method="get" action="{% url 'modulo:AdminRequestList' %}">
+                            <button type="submit">
+                                <img src="{%static 'icons/search.svg'%}">
+                            </button>
+                            <input type="search" placeholder="Buscar Prestamo" aria-label="Search" name="buscar"
+                                value="{{ request.GET.buscar }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="admin-request-list-body">
+            <div class="admin-request-list-table">
+                <table>
+                    <thead>
+                        <tr class="admin-request-list-table-titles">
+                            <th class="table-title">
+                                <p>No. de préstamo</p>
+                            </th>
+                            <th class="table-title">
+                                <p>Libros</p>
+                            </th>
+                            <th class="table-title">
+                                <p>Prestatario</p>
+                            </th>
+                            <th class="table-title">
+                                <p>Fecha de devolución</p>
+                            </th>
+                            <th class="table-title">
+                                <p>Estado</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prestamo in prestamos %}
+                        {% for det_prestamo in det_prestamos %}
+                        {% if det_prestamo.id_prestamo == prestamo %}
+                        <tr class="request">
+                            <td class="request-data id">
+                                <p>#P{{ prestamo.id_prestamo }}</p>
+                            </td>
+                            <td class="request-data libros">
+                                <p>{{ det_prestamo.libro }}</p>
+                            </td>
+                            <td class="request-data prestatario">
+                                <p>{{ prestamo.id_usuario }}</p>
+                            </td>
+                            <td class="request-data fecha-devolucion">
+                                <p>{{ prestamo.fecha_devolucion }}</p>
+                            </td>
+                            <td class="request-data estado">
+                                <p>{{ det_prestamo.estatus }}</p>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

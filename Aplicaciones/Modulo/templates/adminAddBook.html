@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Libros {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacionAdmin.html" %}
+
+<div class=bookDetail">
+    <div class="book-detail-content">
+
+        <div class="book-detail-card">
+            <form method="POST" enctype="multipart/form-data" class="book-detail-form">
+                {% csrf_token %}
+                <div class="book-detail-image book-detail-image-admin">
+                    <div class="book-detail-image-content-admin">
+                        <div class="book-detail-image-cover">
+                            <div class="book-detail-image-cover-content">
+                                <div class="book-detail-button-edit-image">
+                                    {{ book_form.imagen }}
+                                </div>
+                                <button type="button" onclick="document.getElementById('id_imagen').click()">Subir
+                                    Imagen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-detail-description book-detail-description-admin">
+                    <div class="book-detail-info book-detail-info-admin">
+                        <div class="book-detail-title book-detail-admin">
+                            <p>Titulo: </p>{{ book_form.titulo }}
+                        </div>
+                        <div class="book-detail-id book-detail-admin">
+                            <p>Código Interno: </p>{{ book_form.codigo_interno }}
+                        </div>
+                        <div class="book-detail-available book-detail-admin">
+                            <p>Disponibles: </p>{{ book_form.disponibles }}
+                        </div>
+                        <p class="text-informacion-del-libro">Informacion del libro</p>
+                        <div class="book-detail-status book-detail-admin">
+                            <p>Estado: </p>{{ book_form.estado_libro }}
+                        </div>
+                        <div class="book-detail-author book-detail-admin">
+                            <p>Autor: </p>{{ book_form.autor }}
+                        </div>
+                        <div class="book-detail-editorial book-detail-admin">
+                            <p>Editorial: </p>{{ book_form.editorial }}
+                        </div>
+                        <div class="book-detail-languague book-detail-admin">
+                            <p>Idioma: </p>{{ book_form.idioma }}
+                        </div>
+                        <div class="book-detail-pages book-detail-admin">
+                            <p>Páginas: </p>{{ book_form.paginas }}
+                        </div>
+                        <div class="book-detail-career book-detail-admin">
+                            <p>Carrera: </p>{{ book_form.carrera }}
+                        </div>
+                    </div>
+                    <div class="book-detail-buttons">
+                        <div class="button-content boton-añadir-libro">
+                            <button class="primary-button button-añadir-libro">Añadir Libro</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

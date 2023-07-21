@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Libros {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacion.html" %}
+<div class="bookRequest">
+    <div class="book-request-content">
+
+        <div class="book-request-card">
+            <div class="book-request-description">
+                <div class="book-request-info">
+                    <p class="text-thanks-request">¡Gracias por tu solicitud!</p>
+                    <p>Su número de préstamo es #PL{{ book_request.id_prestamo}}</p>
+                    <div class="book-request-return-date">
+                        <p>La fecha de devolucion es el {{ book_request.fecha_devolucion}}</p>
+                    </div>
+                    <p>En caso de que no regrese el libro a tiempo o lo devuelva dañado, se le
+                        aplicara una sancion</p>
+                    <div class="book-request-button">
+                        <div class="button-content boton-seguir-explorando">
+                            <a href="{% url 'modulo:BooksPage' %}">
+                                <button class="primary-button button-seguir-explorando">Seguir explorando</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

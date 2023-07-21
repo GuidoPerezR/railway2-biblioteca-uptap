@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <nav class="navbar">
+
+        <div class="navbar-left">
+
+            <div class="navbar-logo">
+                <a href="{% url 'modulo:AdminBooksPage' %}">
+                    <img src="{%static 'images/LogoUPTap.png'%}" alt="Logo">
+                </a>
+            </div>
+
+            <div class="navbar-titulo">
+                <p>Biblioteca Politécnica</p>
+            </div>
+
+        </div>
+
+        <div class="navbar-icons">
+            <div class="add-career-icon">
+                <img src="{%static 'icons/add-career.svg'%}">
+            </div>
+            <div class="add-charge-icon">
+                <img src="{%static 'icons/add-chargue.svg'%}">
+            </div>
+            <div class="add-shift-icon">
+                <img src="{%static 'icons/add-shift.svg'%}">
+            </div>
+            <div class="add-user-icon">
+                <img src="{%static 'icons/add-person.svg'%}">
+            </div>
+            <div class="add-book-icon">
+                <a href="{% url 'modulo:AdminAddBook' %}">
+                    <img src="{%static 'icons/add-book.png'%}">
+                </a>
+            </div>
+            <div class="request-icon">
+                <a href="{% url 'modulo:AdminRequestList' %}">
+                    <img src="{%static 'icons/ballot.svg'%}">
+                </a>
+            </div>
+            <div class="admin-icon">
+                <img src="{%static 'icons/user1.svg'%}">
+            </div>
+        </div>
+
+    </nav>
+</body>
+
+</html>

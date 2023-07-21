@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Iniciar Sesion {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacion.html" %}
+<div class="logIn" style="background-image: url('{%static 'images/background.jpg'%}');">
+
+    <div class="content-alert">
+        {% if messages%}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                <li{% if message.tag %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+            </div>
+            {% endfor%}
+        </ul>
+        {% endif%}
+    </div>
+
+
+
+    <div class="logInFormContent">
+
+        <div class="logInUp">
+            <div class="lince-image">
+                <img src="{%static 'images/lince.png'%}">
+            </div>
+        </div>
+
+        <div class="logInDown">
+            <div class="title iniciarSesion-title">
+                <p>Iniciar Sesión</p>
+            </div>
+
+            <div class="content-inicioSesion">
+                <main class="form-signin w-100 m-auto">
+                    <form class="row" method="post">
+                        {% csrf_token %}
+                        <div class="input-form email">
+                            <div class="content-input-form">
+                                <input type="text" class="form-control" placeholder="Correo" name="username">
+                            </div>
+                        </div>
+
+                        <div class="input-form password">
+                            <div class="content-input-form">
+                                <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                            </div>
+                        </div>
+
+                        <div class="content-button boton-ingresar">
+                            <button type="submit" class="primary-button button-ingresar">Ingresar</button>
+                        </div>
+                    </form>
+                </main>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% include "footer.html" %}
+{% endblock %}

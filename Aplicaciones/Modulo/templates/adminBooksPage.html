@@ -1,0 +1,194 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} Biblioteca Politecnica Libros {% endblock %}
+
+{% block content %}
+{% include "BarraNavegacionAdmin.html" %}
+<div class="Biblioteca">
+
+    <div class="content-alert">
+        {% if messages%}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <li{% if message.tag %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+            </div>
+            {% endfor%}
+        </ul>
+        {% endif%}
+    </div>
+
+    <div class="add-career-page inactive">
+        {% include "adminAddCareer.html" %}
+    </div>
+    
+    <div class="add-charge-page inactive">
+        {% include "adminAddCharge.html" %}
+    </div>
+
+    <div class="add-shift-page inactive">
+        {% include "adminAddShift.html" %}
+    </div>
+
+    <div class="add-user-page inactive">
+        {% include "adminAddUser.html" %}
+    </div>
+
+    <div class="aside-user-menu-admin inactive">
+        {% include "userMenu.html" %}
+    </div>
+
+    <nav class="secondary-navbar">
+
+        <div class="secondary-navbar-content">
+
+            <div class="secondary-navbar-sections">
+                <a href="#Ingeniería Agroindustrial">
+                    <p>Agroindustrial</p>
+                </a>
+                <a href="#Ingeniería en Tecnología Ambiental">
+                    <p>Ambiental</p>
+                </a>
+                <a href="#Ingeniería en Animación y Efectos Visuales">
+                    <p>Animación</p>
+                </a>
+                <a href="#Ingeniería en Sistemas Automotrices">
+                    <p>Automotrices</p>
+                </a>
+                <a href="#Ingeniería en Energía">
+                    <p>Energía</p>
+                </a>
+                <a href="#Ingeniería Financiera">
+                    <p>Financiera</p>
+                </a>
+                <a href="#Ingeniería en Logística y Transporte">
+                    <p>Logística</p>
+                </a>
+                <a href="#Ingeniería Mecatrónica">
+                    <p>Mecatrónica</p>
+                </a>
+                <a href="#Ingeniería en Nanotecnología">
+                    <p>Nanotecnología</p>
+                </a>
+                <a href="#Ingeniería en Software">
+                    <p>Software</p>
+                </a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="books-page">
+        {% for carrera in carreras %}
+        <div class="list-books" id="{{ carrera.nom_carrera }}">
+
+            <div class="section-name">
+                <h1>{{ carrera.nom_carrera }}</h1>
+            </div>
+
+            <div class="list-books-section">
+                <div class="list-books-container">
+                    <img class="control prev" src="{%static 'images/left.png'%}" alt="">
+                    <div class="slider">
+                        {% for libro in libros %}
+                        {% if libro.carrera == carrera %}
+                        <div class="book admin-book">
+                            <div class="book-content">
+
+                                <div class="book-image">
+                                    <div class="image-content">
+                                        <img src="{{libro.imagen.url}}">
+                                    </div>
+                                    <div class="edit-icon">
+                                        <a href="{% url 'modulo:AdminBookDetail' libro.codigo_interno %}">
+                                            <img src="{%static 'icons/edit.svg'%}">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="book-description">
+                                    <div class="book-info">
+                                        <div class="book-title">
+                                            <p>{{ libro.titulo }}</p>
+                                        </div>
+
+                                        <div class="book-author">
+                                            <p>Autor: {{ libro.autor }}</p>
+                                        </div>
+
+                                        <div class="book-available">
+                                            <p>Disponibles: {{ libro.disponibles }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <img class="control next" src="{%static 'images/right.png'%}" alt="">
+                </div>
+            </div>
+
+        </div>
+        {% endfor%}
+
+    </div>
+</div>
+<script>
+    /*Programacion Slider*/ 
+    const slider = document.getElementsByClassName('slider')
+    const prev = document.getElementsByClassName('prev')
+    const next = document.getElementsByClassName('next')
+
+    for (let index = 0; index < slider.length; index++) {
+        prev[index].addEventListener('click', () => (
+            slider[index].scrollLeft -= 600))
+        next[index].addEventListener('click', () => (
+            slider[index].scrollLeft += 600))
+        console.log(prev)
+        console.log(next)
+    }
+    /*Programacion menu de vistas de la pagina de libros*/
+    const buttonAddUser = document.querySelector('.add-user-icon')
+    const buttonAddCareer = document.querySelector('.add-career-icon')
+    const buttonAddCharge = document.querySelector('.add-charge-icon')
+    const buttonAddShift = document.querySelector('.add-shift-icon')
+    const buttonAdminMenu = document.querySelector('.admin-icon')
+    const addUserPage = document.querySelector('.add-user-page')
+    const addCareerPage = document.querySelector('.add-career-page')
+    const addChargePage = document.querySelector('.add-charge-page')
+    const addShiftPage = document.querySelector('.add-shift-page')
+    const AdminMenu = document.querySelector('.aside-user-menu-admin')
+
+    buttonAdminMenu.addEventListener('click', toggleAdminMenu)
+    buttonAddUser.addEventListener('click', toggleUserPage)
+    buttonAddCareer.addEventListener('click', toggleCareerPage)
+    buttonAddCharge.addEventListener('click', toggleChargePage)
+    buttonAddShift.addEventListener('click', toggleShiftPage)
+
+    function toggleUserPage() {
+        addUserPage.classList.toggle('inactive');
+    }
+
+    function toggleAdminMenu() {
+        AdminMenu.classList.toggle('inactive')
+    }
+
+    function toggleCareerPage() {
+        addCareerPage.classList.toggle('inactive')
+    }
+
+    function toggleChargePage() {
+        addChargePage.classList.toggle('inactive')
+    }
+
+    function toggleShiftPage() {
+        addShiftPage.classList.toggle('inactive')
+    }
+</script>
+{% include "footer.html" %}
+{% endblock %}
